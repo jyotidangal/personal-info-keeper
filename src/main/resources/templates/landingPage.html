@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Data</title>
+    <th:block th:replace="fragments/cdnFragment.html :: cdn"></th:block>
+
+</head>
+<body>
+<div class="container">
+    <p> This is home page.</p>
+    <div class="row-mt-5">
+        <div class="col-md-6">
+            <a th:href="@{/personalInfo}"> Give your  personal information here</a>
+        </div>
+        <div class="col-md-6">
+            <a th:href="@{/email}"> Send Email</a>
+        </div>
+
+          </div>
+</div>
+</body>
+</html>

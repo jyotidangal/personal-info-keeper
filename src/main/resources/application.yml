@@ -1,0 +1,5 @@
+spring:
+  Application:
+    name: datakeeper
+  profiles:
+    active: jyoti

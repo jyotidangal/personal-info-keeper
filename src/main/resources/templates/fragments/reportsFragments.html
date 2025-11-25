@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>records</title>
+</head>
+<body>
+    <div  th:fragment="reports" class="card-body">
+        <h2 class="card-title text-center fw-bold text-secondary mb-4">Submitted Records</h2>
+
+        <div class="row g-4" th:each="p : ${personDtoList}">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm p-3">
+
+                    <!-- Images Section (Large) -->
+                    <div class="d-flex flex-wrap justify-content-center mb-3">
+                        <div th:each="fileName : ${p.getFilePathList()}" class="me-2 mb-2">
+                            <img th:src="@{'/personalInfo/image?fileName=' + ${fileName}}"
+                                 alt="Profile Picture"
+                                 class="rounded border"
+                                 style="width: 200px; height: 200px; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <!-- Details Section (Organized Grid) -->
+                    <div class="row text-start mt-3">
+                        <div class="col-4 mb-2">
+                            <span class="fw-semibold text-secondary">First Name:</span>
+                            <span th:text="${p.firstName}" class="ms-1"></span>
+                        </div>
+                        <div class="col-8 mb-2">
+                            <span class="fw-semibold text-secondary">Last Name:</span>
+                            <span th:text="${p.lastName}" class="ms-1"></span>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <span class="fw-semibold text-secondary">Email:</span>
+                            <span th:text="${p.email}" class="ms-1"></span>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <span class="fw-semibold text-secondary">Address:</span>
+                            <span th:text="${p.address}" class="ms-1"></span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <span class="fw-semibold text-secondary">Gender:</span>
+                            <span th:text="${p.gender}" class="ms-1"></span>
+                        </div>
+                        <!--   button section-->
+                        <div class="mt-3 d-flex justify-content-center gap-2">
+                            <!--                                    update button-->
+                            <a th:href="@{'/personalInfo/edit/'+ ${p.id}}"   class="btn btn-primary fw-bold">Update</a>
+                            <!--                                        Delete button-->
+                            <a th:href="@{'/personalInfo/delete/'+${p.id}}"class="btn btn-danger fw-bold"
+                               onclick="return confirm('Are you sure you want to delete this record?');">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
