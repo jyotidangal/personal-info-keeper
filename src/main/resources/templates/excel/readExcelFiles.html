@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Excel File</title>
+    <th:block th:replace="fragments/cdnFragment.html:: cdn"></th:block>
+</head>
+<body>
+<div class="container">
+    <h2 class="card-title text-center fw-bold text-success mb-4">Excel Read Operations</h2>
+    <div class="row">
+     <div class="col-md-4">
+    <form th:action="@{/excel/save}" method="post"  enctype="multipart/form-data">
+        <div class="col-md-6">
+            <label class="form-label fw-medium text-secondary">Select the file</label>
+            <input type="file" name="file" class="form-control">
+        </div>
+        <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-danger text-white fw-bold px-4 py-2" >Submit</button>
+        </div>
+    </form>
+     </div>
+        <br><br>
+<!--        div for displaying the result-->
+        <div th:if="${excelData != null}">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th th:each="cell : ${excelData[0]}" th:text="${cell}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="row : ${excelData}" th:if="${row != excelData[0]}">
+                    <td th:each="cell : ${row}" th:text="${cell}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
