@@ -6,10 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExcelDto {
-    public MultipartFile file;
+public class ExcelWriteDto {
+   List<String> nameList;
+   List<String> gmailList;
+   List<Integer> ageList;
 }

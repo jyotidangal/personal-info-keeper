@@ -2,7 +2,6 @@ package com.framework.java.datakeeper.controller;
 
 import com.framework.java.datakeeper.service.excelservice.ExcelService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +13,12 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/excel")
-public class ExcelController {
+@RequestMapping("/excel/readExcelFiles")
+public class ExcelReadController {
 
     public final ExcelService excelService;
 
-    public ExcelController( ExcelService excelService) {
+    public ExcelReadController(ExcelService excelService) {
 
         this.excelService = excelService;
     }
@@ -29,7 +28,7 @@ public class ExcelController {
 
         return "excel/readExcelFiles";
     }
-    @PostMapping("/save")
+    @PostMapping("readExcelFiles/save")
     public String saveExcel(@RequestParam("file")MultipartFile multipartFile , RedirectAttributes redirectAttributes){
         if(multipartFile.isEmpty()){
           System.out.println("File is not selected!!");

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Write in Excel</title>
+    <th:block th:replace="fragments/cdnFragment.html:: cdn"></th:block>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="card-title text-center fw-bold text-success mb-4">Data From users</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <form th:action="@{/excel/writeInExcel/write-multiple}" method="post" th:object="${writeDto}">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="inputRows">
+
+                    <tr>
+                        <td><input type="text" name="name" th:field="${writeDto.nameList}" class="form-control" required/></td>
+                        <td><input type="email" name="email" th:field="${writeDto.gmailList}" class="form-control" required/></td>
+                        <td><input type="number" name="age" th:field="${writeDto.ageList}" class="form-control" min="1" max="110" required/></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn btn-secondary" onclick="addRow()">Add Row</button>
+                <button type="submit" class="btn btn-primary">Save to Excel</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    function addRow() {
+        let row = `
+        <tr>
+            <td><input type="text" name="name" class="form-control" /></td>
+            <td><input type="text" name="email" class="form-control" /></td>
+            <td><input type="number" name="age" class="form-control" /></td>
+        </tr>`;
+        document.getElementById("inputRows").insertAdjacentHTML('beforeend', row);
+    }
+</script>
+
+</body>
+</html>

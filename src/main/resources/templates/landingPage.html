@@ -4,23 +4,80 @@
     <meta charset="UTF-8">
     <title>Personal Data</title>
     <th:block th:replace="fragments/cdnFragment.html :: cdn"></th:block>
+    <style>
+        body {
+            background: #f3f6fb;
+            font-family: "Segoe UI", Roboto, sans-serif;
+        }
 
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .link-card {
+            border-radius: 12px;
+            padding: 25px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.25s ease;
+            height: 100%;
+            border: 1px solid #e5e9f2;
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+            background: #f8f9ff;
+            border-color: #cdd5f3;
+        }
+
+        .link-text {
+            text-decoration: none;
+            color: #2a3f5f;
+            font-size: 18px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .link-text:hover {
+            color: #4c63f0;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <p> This is home page.</p>
-    <div class="row">
-        <div class="col-md-6">
-            <a th:href="@{/personalInfo}"> Give your  personal information here</a>
-        </div>
-        <div class="col-md-6">
-            <a th:href="@{/email}"> Send Email</a>
-        </div>
-        <div class="col-md-6">
-            <a th:href="@{/excel}"> Send Email</a>
+<div class="container mt-4">
+    <p class="page-title">Welcome to the Dashboard</p>
+
+    <div class="row g-3"><!-- g-3 = Bootstrap spacing -->
+
+        <div class="col-md-6 col-lg-4">
+            <div class="link-card">
+                <a th:href="@{/personalInfo}" class="link-text">Give your personal information here</a>
+            </div>
         </div>
 
-          </div>
+        <div class="col-md-6 col-lg-4" >
+            <div class="link-card" >
+                <a th:href="@{/email}" class="link-text">Send Email</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="link-card">
+                <a th:href="@{/excel/readExcelFiles}" class="link-text">Read Excel File</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="link-card">
+                <a th:href="@{/excel/writeInExcel}" class="link-text">Write to Excel File</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>

@@ -10,9 +10,9 @@
     <h2 class="card-title text-center fw-bold text-success mb-4">Excel Read Operations</h2>
     <div class="row">
      <div class="col-md-4">
-    <form th:action="@{/excel/save}" method="post"  enctype="multipart/form-data">
+    <form th:action="@{/excel/readExcelFiles/save}" method="post"  enctype="multipart/form-data">
         <div class="col-md-6">
-            <label class="form-label fw-medium text-secondary">Select the file</label>
+            <label class="form-label fw-medium text-secondary">Select the file(Note:: only choose Excel File)</label>
             <input type="file" name="file" class="form-control">
         </div>
         <div class="col-12 text-center mt-3">
